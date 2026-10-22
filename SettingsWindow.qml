@@ -12,6 +12,8 @@ PopupWindow {
     property bool barOnRight: false
     signal barToggleRequested(bool newState)
 
+    exclusionZone: ignore
+
     visible: true
     implicitWidth: 360
     implicitHeight: 240
