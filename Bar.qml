@@ -8,7 +8,7 @@ PanelWindow {
 		
     color: "transparent"
 		
-		required property bool barOnRight
+	required property bool barOnRight
     required property int barWidth
 
     signal openSettings()
@@ -21,8 +21,8 @@ PanelWindow {
         left: !barOnRight
         right: barOnRight
     }
-		exclusiveZone: barWidth
-		exclusionMode: ExclusionMode.Ignore
+	exclusiveZone: barWidth
+	exclusionMode: ExclusionMode.Ignore
     implicitWidth: barWidth
 
     Rectangle {
