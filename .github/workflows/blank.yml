@@ -43,4 +43,4 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Check QML Syntax
         run: |
-          quickshell --check shell.qml
+          quickshell -f shell.qml
