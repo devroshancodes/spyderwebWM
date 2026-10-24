@@ -29,10 +29,12 @@ jobs:
           pacman -Syu --noconfirm
           pacman -S --noconfirm git base-devel cmake extra-cmake-modules qt6-base qt6-declarative
           
-          pacman -S --noconfirm jemalloc qt6-svg libpipewire cpptrace polkit
+          pacman -S --noconfirm jemalloc qt6-svg libpipewire cpptrace polkit \
+          vulkan-headers qt6-shadertools wayland-protocols cli11 ninja
 
           # 3. Create a brand new unprivileged user specifically for the compilation step
           useradd -m builder
+          echo "builder ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
           chown -R builder:builder /tmp
           
           sudo -u builder git clone https://aur.archlinux.org/quickshell-git.git /tmp/quickshell
