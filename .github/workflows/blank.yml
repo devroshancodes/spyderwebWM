@@ -29,12 +29,15 @@ jobs:
           pacman -Syu --noconfirm
           pacman -S --noconfirm git base-devel cmake extra-cmake-modules qt6-base qt6-declarative
           
-          echo "nobody ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-          chown -R nobody:nobody /tmp
+          pacman -S --noconfirm jemalloc qt6-svg libpipewire cpptrace polkit
 
-          sudo -u nobody git clone https://aur.archlinux.org/quickshell-git.git /tmp/quickshell
+          # 3. Create a brand new unprivileged user specifically for the compilation step
+          useradd -m builder
+          chown -R builder:builder /tmp
+          
+          sudo -u builder git clone https://aur.archlinux.org/quickshell-git.git /tmp/quickshell
           cd /tmp/quickshell 
-          sudo -u nobody makepkg -si --noconfirm --asdeps
+          sudo -u builder makepkg -si --noconfirm --asdeps
       # Runs a set of commands using the runners shell
       - name: Check QML Syntax
         run: |
