@@ -28,7 +28,7 @@ jobs:
         run: |
           pacman -Syu --noconfirm
           pacman -S --noconfirm git base-devel cmake extra-cmake-modules qt6-base qt6-declarative
-          chown - R nobody:nobody /tmp
+          chown -R nobody:nobody /tmp
 
           sudo -u nobody git clone https://aur.archlinux.org/quickshell-git.git /tmp/quickshell
           cd /tmp/quickshell && sudo -u nobody makepkg -si --noconfirm --asdeps
