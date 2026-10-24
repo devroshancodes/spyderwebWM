@@ -28,11 +28,13 @@ jobs:
         run: |
           pacman -Syu --noconfirm
           pacman -S --noconfirm git base-devel cmake extra-cmake-modules qt6-base qt6-declarative
+          
           echo "nobody ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
           chown -R nobody:nobody /tmp
 
           sudo -u nobody git clone https://aur.archlinux.org/quickshell-git.git /tmp/quickshell
-          cd /tmp/quickshell && sudo -u nobody makepkg -si --noconfirm --asdeps
+          cd /tmp/quickshell 
+          sudo -u nobody makepkg -si --noconfirm --asdeps
       # Runs a set of commands using the runners shell
       - name: Check QML Syntax
         run: |
